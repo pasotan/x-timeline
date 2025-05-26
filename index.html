@@ -22,57 +22,63 @@
       overflow-x: hidden;
     }
 
-    /* Curator フィード全体 */
-    .crt-feed {
-      max-width: 100% !important;
-      box-sizing: border-box !important;
-      overflow-x: hidden !important;
+    /* ────────────────────────────────────────── */
+    /* ここから追加・上書きCSS                   */
+    /* ────────────────────────────────────────── */
+
+    /* List全体をブロック化（flex を解除） */
+    .crt-feed,
+    .crt-feed-list {
+      display: block !important;
     }
 
-    /* フィード項目全体 */
+    /* 各アイテムもブロック化 */
     .crt-feed-item {
-      max-width: 100% !important;
+      display: block !important;
       width: 100% !important;
       box-sizing: border-box !important;
-      overflow-x: hidden !important;
-      padding: 20px !important;
+      margin-bottom: 20px !important;
+      padding: 0 !important;
     }
 
-    /* 画像をはみ出させず、拡大も許可 */
+    /* 画像コンテナを幅100%に */
+    .crt-feed-item-image,
+    .crt-feed .crt-feed-item-image-wrapper {
+      display: block !important;
+      width: 100% !important;
+      flex: none !important;
+      box-sizing: border-box !important;
+      margin: 0 auto !important;
+      padding: 0 !important;
+    }
+
+    /* 画像そのものも幅100%、高さ自動 */
+    .crt-feed-item-image img,
     .crt-feed img {
+      width: 100% !important;
       max-width: 100% !important;
-      width: auto !important;
       height: auto !important;
       object-fit: cover !important;
-      display: block;
-      margin: 0 auto;
-    }
-
-    /* 本文コンテンツ幅を制御 */
-    .crt-feed .crt-feed-item-content {
-      max-width: 100% !important;
-      width: 100% !important;
       display: block !important;
+      margin: 0 auto !important;
+    }
+
+    /* テキストコンテンツをブロック化 */
+    .crt-feed-item-content {
+      display: block !important;
+      width: 100% !important;
       box-sizing: border-box !important;
+      padding: 10px 0 !important;
     }
 
-    /* スマホ表示向けのレスポンシブ対応 */
+    /* 小さい画面でも余白を取りつつ読みやすく */
     @media (max-width: 768px) {
-      .crt-feed .crt-feed-item {
+      .crt-feed-item-content {
+        padding: 8px 0 !important;
         font-size: 16px !important;
-        padding: 12px !important;
-      }
-
-      .crt-feed img {
-        max-width: 100% !important;
-        height: auto !important;
-      }
-
-      .crt-feed .crt-feed-item-content {
-        width: 100% !important;
-        display: block !important;
       }
     }
+    /* ────────────────────────────────────────── */
   </style>
 </head>
 <body>
@@ -87,11 +93,10 @@
   <!-- Curatorスクリプト埋め込み -->
   <script type="text/javascript">
     (function(){
-      var i, e, d = document, s = "script";
-      i = d.createElement("script"); i.async = 1; i.charset = "UTF-8";
-      i.src = "https://cdn.curator.io/published/54426d35-f99c-469c-811d-d55d884c6141.js";
-      e = d.getElementsByTagName(s)[0];
-      e.parentNode.insertBefore(i, e);
+      var i,e,d=document,s="script";
+      i=d.createElement(s); i.async=1; i.charset="UTF-8";
+      i.src="https://cdn.curator.io/published/54426d35-f99c-469c-811d-d55d884c6141.js";
+      e=d.getElementsByTagName(s)[0]; e.parentNode.insertBefore(i,e);
     })();
   </script>
 
