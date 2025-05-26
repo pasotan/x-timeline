@@ -2,18 +2,16 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>Curator.io List – 画像なし投稿はテキスト100%</title>
+  <title>Curator.io List – スマホでも画像100%</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    /* Google Fonts 読み込み（任意） */
+    /* 全要素にリッチゴシック体（Noto Sans JP）を適用 */
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
-
-    /* 全体にリッチゴシック体 */
     * {
       font-family: 'Noto Sans JP', sans-serif !important;
     }
 
-    /* コンテナ調整 */
+    /* 全体コンテナ */
     html, body { margin:0; padding:0; overflow-x:hidden; }
     #curator-feed-default-feed-layout {
       max-width:100%; margin:0 auto; padding:16px; box-sizing:border-box;
@@ -27,21 +25,21 @@
       margin-bottom:24px !important;
     }
 
-    /* 画像あり投稿 → 1/3 & 2/3 */
+    /* 画像あり投稿：横幅1/3・テキスト2/3 */
     .crt-post-has-image .crt-list-post-image {
       flex:0 0 33.3333% !important;
       max-width:33.3333% !important;
       width:33.3333% !important;
       padding-right:12px !important;
       box-sizing:border-box !important;
+      display:block !important;
     }
     .crt-post-has-image .crt-list-post-image > div {
-      width:100% !important;
+      width:100% !important; box-sizing:border-box !important;
     }
     .crt-post-has-image .crt-list-post-image img {
-      display:block !important;
-      width:100% !important;
-      height:auto !important;
+      width:100% !important; max-width:100% !important;
+      height:auto !important; display:block !important;
       object-fit:cover !important;
     }
     .crt-post-has-image .crt-list-post-text {
@@ -52,7 +50,7 @@
       box-sizing:border-box !important;
     }
 
-    /* 画像なし投稿 → テキスト100% */
+    /* 画像なし投稿：テキスト100% */
     .crt-post-has-text:not(.crt-post-has-image) .crt-list-post-image {
       display:none !important;
     }
@@ -64,7 +62,7 @@
       box-sizing:border-box !important;
     }
 
-    /* 不要アイコン類を完全非表示 */
+    /* 不要アイコン類を完全に非表示 */
     .crt-social-icon,
     .crt-post-share,
     .crt-share-button,
@@ -73,20 +71,38 @@
       display:none !important;
     }
 
-    /* モバイル（幅768px未満）：縦並び＆幅100% */
-    @media (max-width:768px) {
+    /* モバイル（幅768px未満）：縦並び＆画像100% */
+    @media (max-width: 768px) {
       .crt-post-content {
-        flex-direction:column !important;
+        flex-direction: column !important;
       }
-      .crt-list-post-image,
-      .crt-list-post-text {
+      /* 画像コンテナ本体 */
+      .crt-list-post-image {
         flex:0 0 100% !important;
         max-width:100% !important;
         width:100% !important;
         padding:0 !important;
+        box-sizing:border-box !important;
+        display:block !important;
       }
+      /* 画像ラッパーdiv */
+      .crt-list-post-image > div {
+        width:100% !important; box-sizing:border-box !important;
+      }
+      /* 画像そのもの */
+      .crt-list-post-image img {
+        width:100% !important; max-width:100% !important;
+        height:auto !important; display:block !important;
+        object-fit:cover !important;
+      }
+      /* テキスト */
       .crt-list-post-text {
+        flex:0 0 100% !important;
+        max-width:100% !important;
+        width:100% !important;
+        padding-left:0 !important;
         margin-top:16px !important;
+        box-sizing:border-box !important;
       }
     }
   </style>
@@ -101,7 +117,7 @@
   </div>
 
   <!-- Curator.io ウィジェットスクリプト -->
-  <script type="text/javascript">
+  <script>
     (function(){
       var d=document, s='script',
           js=d.createElement(s),
