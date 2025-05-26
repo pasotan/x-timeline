@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Curator.io フィード表示</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    .crt-logo {
+      display: block;
+      margin-top: 10px;
+      text-align: center;
+      font-size: 12px;
+      color: #888;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- フィードを表示する位置 -->
+  <div id="curator-feed-default-feed-layout">
+    <a href="https://curator.io" target="_blank" class="crt-logo crt-tag">
+      Powered by Curator.io
+    </a>
+  </div>
+
+  <!-- Curator用スクリプト（末尾に配置） -->
+  <script type="text/javascript">
+    (function(){
+      var i, e, d = document, s = "script";
+      i = d.createElement("script"); i.async = 1; i.charset = "UTF-8";
+      i.src = "https://cdn.curator.io/published/54426d35-f99c-469c-811d-d55d884c6141.js";
+      e = d.getElementsByTagName(s)[0];
+      e.parentNode.insertBefore(i, e);
+    })();
+  </script>
+
+</body>
+</html>
