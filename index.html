@@ -2,15 +2,16 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>Curator.io Listビュー修正</title>
+  <title>Curator.io レスポンシブ対応</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
     html, body {
       margin: 0;
       padding: 0;
       font-family: sans-serif;
       background: #fff;
-      overflow-x: hidden; /* 横スクロール禁止 */
+      overflow-x: hidden;
     }
 
     #curator-feed-default-feed-layout {
@@ -21,40 +22,69 @@
       overflow-x: hidden;
     }
 
-    /* Curator のフィード全体 */
+    /* Curator フィード全体 */
     .crt-feed {
       max-width: 100% !important;
       box-sizing: border-box !important;
       overflow-x: hidden !important;
     }
 
-    /* 個別のアイテム（カード） */
+    /* フィード項目全体 */
     .crt-feed-item {
       max-width: 100% !important;
       width: 100% !important;
       box-sizing: border-box !important;
       overflow-x: hidden !important;
+      padding: 20px !important;
     }
 
-    /* 画像がはみ出さないようにする */
+    /* 画像をはみ出させず、拡大も許可 */
     .crt-feed img {
       max-width: 100% !important;
+      width: auto !important;
       height: auto !important;
-      object-fit: contain !important;
+      object-fit: cover !important;
       display: block;
+      margin: 0 auto;
+    }
+
+    /* 本文コンテンツ幅を制御 */
+    .crt-feed .crt-feed-item-content {
+      max-width: 100% !important;
+      width: 100% !important;
+      display: block !important;
+      box-sizing: border-box !important;
+    }
+
+    /* スマホ表示向けのレスポンシブ対応 */
+    @media (max-width: 768px) {
+      .crt-feed .crt-feed-item {
+        font-size: 16px !important;
+        padding: 12px !important;
+      }
+
+      .crt-feed img {
+        max-width: 100% !important;
+        height: auto !important;
+      }
+
+      .crt-feed .crt-feed-item-content {
+        width: 100% !important;
+        display: block !important;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- フィード本体 -->
+  <!-- Curatorフィード本体 -->
   <div id="curator-feed-default-feed-layout">
     <a href="https://curator.io" target="_blank" class="crt-logo crt-tag">
       Powered by Curator.io
     </a>
   </div>
 
-  <!-- Curatorのスクリプト -->
+  <!-- Curatorスクリプト埋め込み -->
   <script type="text/javascript">
     (function(){
       var i, e, d = document, s = "script";
