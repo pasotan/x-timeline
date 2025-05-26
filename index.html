@@ -2,101 +2,35 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>Curator.io レスポンシブ対応</title>
+  <title>Curator.io Waterfall フィード</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      font-family: sans-serif;
-      background: #fff;
-      overflow-x: hidden;
-    }
-
+    /* 埋め込みコンテナの幅だけ制御 */
     #curator-feed-default-feed-layout {
       max-width: 100%;
       margin: 0 auto;
-      padding: 20px;
       box-sizing: border-box;
-      overflow-x: hidden;
     }
-
-    /* ────────────────────────────────────────── */
-    /* ここから追加・上書きCSS                   */
-    /* ────────────────────────────────────────── */
-
-    /* List全体をブロック化（flex を解除） */
-    .crt-feed,
-    .crt-feed-list {
-      display: block !important;
-    }
-
-    /* 各アイテムもブロック化 */
-    .crt-feed-item {
-      display: block !important;
-      width: 100% !important;
-      box-sizing: border-box !important;
-      margin-bottom: 20px !important;
-      padding: 0 !important;
-    }
-
-    /* 画像コンテナを幅100%に */
-    .crt-feed-item-image,
-    .crt-feed .crt-feed-item-image-wrapper {
-      display: block !important;
-      width: 100% !important;
-      flex: none !important;
-      box-sizing: border-box !important;
-      margin: 0 auto !important;
-      padding: 0 !important;
-    }
-
-    /* 画像そのものも幅100%、高さ自動 */
-    .crt-feed-item-image img,
-    .crt-feed img {
-      width: 100% !important;
-      max-width: 100% !important;
-      height: auto !important;
-      object-fit: cover !important;
-      display: block !important;
-      margin: 0 auto !important;
-    }
-
-    /* テキストコンテンツをブロック化 */
-    .crt-feed-item-content {
-      display: block !important;
-      width: 100% !important;
-      box-sizing: border-box !important;
-      padding: 10px 0 !important;
-    }
-
-    /* 小さい画面でも余白を取りつつ読みやすく */
-    @media (max-width: 768px) {
-      .crt-feed-item-content {
-        padding: 8px 0 !important;
-        font-size: 16px !important;
-      }
-    }
-    /* ────────────────────────────────────────── */
   </style>
 </head>
 <body>
 
-  <!-- Curatorフィード本体 -->
+  <!-- Curator Waterfall フィード表示 -->
   <div id="curator-feed-default-feed-layout">
     <a href="https://curator.io" target="_blank" class="crt-logo crt-tag">
       Powered by Curator.io
     </a>
   </div>
 
-  <!-- Curatorスクリプト埋め込み -->
+  <!-- Curator.io ウィジェットスクリプト -->
   <script type="text/javascript">
     (function(){
-      var i,e,d=document,s="script";
-      i=d.createElement(s); i.async=1; i.charset="UTF-8";
-      i.src="https://cdn.curator.io/published/54426d35-f99c-469c-811d-d55d884c6141.js";
-      e=d.getElementsByTagName(s)[0]; e.parentNode.insertBefore(i,e);
+      var d = document, s = 'script',
+          js = d.createElement(s),
+          ref = d.getElementsByTagName(s)[0];
+      js.src = 'https://cdn.curator.io/published/54426d35-f99c-469c-811d-d55d884c6141.js';
+      js.async = true; js.charset = 'UTF-8';
+      ref.parentNode.insertBefore(js, ref);
     })();
   </script>
 
