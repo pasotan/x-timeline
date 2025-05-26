@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>Curator.io フィード表示</title>
+  <title>Curator.io Listビュー修正</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     html, body {
@@ -10,31 +10,44 @@
       padding: 0;
       font-family: sans-serif;
       background: #fff;
+      overflow-x: hidden; /* 横スクロール禁止 */
     }
 
     #curator-feed-default-feed-layout {
-      max-width: 800px;  /* フィードの最大幅を指定 */
+      max-width: 100%;
       margin: 0 auto;
       padding: 20px;
       box-sizing: border-box;
+      overflow-x: hidden;
     }
 
-    /* Curator の画像に制限をかける */
+    /* Curator のフィード全体 */
+    .crt-feed {
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+      overflow-x: hidden !important;
+    }
+
+    /* 個別のアイテム（カード） */
+    .crt-feed-item {
+      max-width: 100% !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+      overflow-x: hidden !important;
+    }
+
+    /* 画像がはみ出さないようにする */
     .crt-feed img {
       max-width: 100% !important;
       height: auto !important;
       object-fit: contain !important;
-    }
-
-    /* カード全体の横幅制限 */
-    .crt-feed-item {
-      max-width: 100% !important;
+      display: block;
     }
   </style>
 </head>
 <body>
 
-  <!-- Curatorフィードを表示する位置 -->
+  <!-- フィード本体 -->
   <div id="curator-feed-default-feed-layout">
     <a href="https://curator.io" target="_blank" class="crt-logo crt-tag">
       Powered by Curator.io
