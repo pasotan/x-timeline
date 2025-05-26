@@ -5,31 +5,43 @@
   <title>Curator.io フィード表示</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
-      font-family: sans-serif;
+    html, body {
       margin: 0;
-      padding: 20px;
+      padding: 0;
+      font-family: sans-serif;
+      background: #fff;
     }
-    .crt-logo {
-      display: block;
-      margin-top: 10px;
-      text-align: center;
-      font-size: 12px;
-      color: #888;
-      text-decoration: none;
+
+    #curator-feed-default-feed-layout {
+      max-width: 800px;  /* フィードの最大幅を指定 */
+      margin: 0 auto;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    /* Curator の画像に制限をかける */
+    .crt-feed img {
+      max-width: 100% !important;
+      height: auto !important;
+      object-fit: contain !important;
+    }
+
+    /* カード全体の横幅制限 */
+    .crt-feed-item {
+      max-width: 100% !important;
     }
   </style>
 </head>
 <body>
 
-  <!-- フィードを表示する位置 -->
+  <!-- Curatorフィードを表示する位置 -->
   <div id="curator-feed-default-feed-layout">
     <a href="https://curator.io" target="_blank" class="crt-logo crt-tag">
       Powered by Curator.io
     </a>
   </div>
 
-  <!-- Curator用スクリプト（末尾に配置） -->
+  <!-- Curatorのスクリプト -->
   <script type="text/javascript">
     (function(){
       var i, e, d = document, s = "script";
